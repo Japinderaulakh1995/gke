@@ -1,7 +1,7 @@
 locals {
   enabled_apis = [
     "compute.googleapis.com",
-    "container.googleapis.com",
+    "container.googleapis.com"
   ]
 }
 resource "google_project_service" "enabled_apis" {
