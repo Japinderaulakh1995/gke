@@ -1,0 +1,32 @@
+steps:
+  # Step 1: Clone the GitHub repository containing the Kubernetes manifests
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/Japinderaulakh1995/gke.git']
+
+  # Step 2: Authenticate with Google Cloud using the service account
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo $SERVICE_ACCOUNT_KEY | base64 --decode > /workspace/keyfile.json
+        gcloud auth activate-service-account --key-file=/workspace/keyfile.json
+        gcloud config set project $PROJECT_ID
+        gcloud config set compute/region us-central1
+
+  # Step 3: Get credentials for the GKE cluster
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'container'
+      - 'clusters'
+      - 'get-credentials'
+      - 'ey-devops-cluster'
+      - '--region'
+      - 'us-central1'
+
+  # Step 4: Apply the blue deployment YAML to the GKE cluster
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'apply'
+      - '-f'
+      - 'kubernetes/blue-deployment.yaml'
