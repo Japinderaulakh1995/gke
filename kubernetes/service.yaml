@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-service
+  name: nginx-service
 spec:
   selector:
-    app: hello-world
+    app: nginx
     version: blue
+    #version: green
   ports:
     - protocol: TCP
       port: 80
