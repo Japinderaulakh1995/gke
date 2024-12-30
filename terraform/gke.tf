@@ -46,7 +46,7 @@ resource "google_container_node_pool" "general" {
 
   node_config {
     preemptible  = false
-    machine_type = "f1-micro"
+    machine_type = "ec2-small"
 
     service_account =  "gke-terrafrom@sacred-epigram-446218-g5.iam.gserviceaccount.com"
     oauth_scopes = [
