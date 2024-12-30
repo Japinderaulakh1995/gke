@@ -28,7 +28,7 @@ ip_allocation_policy {
   logging_service    = "logging.googleapis.com/kubernetes"
   monitoring_service = "monitoring.googleapis.com/kubernetes"
 }
-*************************************************************************
+
 resource "google_container_node_pool" "general" {
   name       ="${var.project_name}-node-pool"
   cluster    = google_container_cluster.primary.id
