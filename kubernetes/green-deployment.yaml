@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-green
+  labels:
+    app: hello-world
+    version: green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+      version: green
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        version: green
+    spec:
+      containers:
+        - name: hello-world
+          image: hello-world:latest
+          ports:
+            - containerPort: 80
