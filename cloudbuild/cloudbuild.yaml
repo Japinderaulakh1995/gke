@@ -25,5 +25,7 @@ steps:
       - 'apply'
       - '-f'
       - 'kubernetes/blue-deployment.yaml'
+      - '-f'
+      - 'kubernetes/service.yaml'
 options:
   logging: CLOUD_LOGGING_ONLY
