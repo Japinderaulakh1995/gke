@@ -1,11 +1,7 @@
 locals {
   enabled_apis = [
-    "serviceusage.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
-    "servicenetworking.googleapis.com",
     "container.googleapis.com",
-    "gkehub.googleapis.com" 
   ]
 }
 resource "google_project_service" "enabled_apis" {
