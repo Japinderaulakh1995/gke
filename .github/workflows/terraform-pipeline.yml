@@ -49,10 +49,10 @@ jobs:
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }} 
         
-    - name: Terraform unlock
-      run: terraform force-unlock -force 1735563977960980 
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }} 
+    #- name: Terraform unlock
+    #  run: terraform force-unlock -force 1735563977960980 
+    #  env:
+    #   GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }} 
 
 
     # Generates an execution plan for Terraform
@@ -63,6 +63,6 @@ jobs:
 
     - name: Terraform Apply
       if: ${{ github.event.inputs.deploy == 'true' }}  # Conditional step
-      run: terraform destroy -auto-approve -input=false
+      run: terraform apply -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
