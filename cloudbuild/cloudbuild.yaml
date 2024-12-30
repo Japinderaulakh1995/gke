@@ -15,7 +15,7 @@ steps:
     args:
       - cluster-info
     env:
-      - 'CLOUDSDK_COMPUTE_REGION=us-central1-a'
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
       - 'CLOUDSDK_CONTAINER_CLUSTER=ey-devops-cluster'
       - KUBECONFIG=/workspace/.kube/config  
       
