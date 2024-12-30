@@ -50,7 +50,7 @@ jobs:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }} 
         
     - name: Terraform unlock
-      run: terraform force-unlock 1735563977960980
+      run: terraform force-unlock 1735563977960980 -force
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }} 
 
