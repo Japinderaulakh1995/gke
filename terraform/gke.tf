@@ -33,7 +33,7 @@ ip_allocation_policy {
 resource "google_container_node_pool" "general" {
   name       ="${var.project_name}-node-pool"
   cluster    = google_container_cluster.primary.id
-  node_count = 2
+  node_count = 1
 
   management {
     auto_repair  = true
@@ -41,8 +41,8 @@ resource "google_container_node_pool" "general" {
   }
   
    autoscaling {
-    min_node_count = 2
-    max_node_count = 4
+    min_node_count = 1
+    max_node_count = 2
   }
 
   node_config {
