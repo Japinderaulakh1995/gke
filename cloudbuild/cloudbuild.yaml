@@ -20,12 +20,6 @@ steps:
       - KUBECONFIG=/workspace/.kube/config  
       
   # Step 3: Apply the blue deployment YAML to the GKE cluster
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args:
-      - 'apply'
-      - '-f'
-      - 'kubernetes/blue-deployment.yaml'
-      - '-f'
-      - 'kubernetes/service.yaml'
+
 options:
   logging: CLOUD_LOGGING_ONLY
