@@ -1,9 +1,5 @@
 steps:
-  # Step 1: Clone the GitHub repository containing the Kubernetes manifests
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/Japinderaulakh1995/gke.git']
-
-  # Step 2: Get credentials for the GKE cluster
+  # Step 1: Get credentials for the GKE cluster
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'container'
@@ -13,7 +9,7 @@ steps:
       - '--region'
       - 'us-central1'
 
-  # Step 3: Apply the blue deployment YAML to the GKE cluster
+  # Step 2: Apply the blue deployment YAML to the GKE cluster
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
