@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       deploy:
-        description: 'Deploy the terraform code?'
+        description: 'Do you also want to run the terraform apply?'
         required: false
         default: 'false'
         type: boolean
@@ -57,6 +57,7 @@ jobs:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
 
     - name: Terraform Apply
-      run: terraform destroy -auto-approve -input=false
+      if: ${{ github.event.inputs.deploy == 'true' }}  # Conditional step
+      run: terraform apply -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
