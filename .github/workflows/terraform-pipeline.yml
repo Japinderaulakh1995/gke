@@ -58,6 +58,6 @@ jobs:
 
     - name: Terraform Apply
       if: ${{ github.event.inputs.deploy == 'true' }}  # Conditional step
-      run: terraform apply -auto-approve -input=false
+      run: terraform destroy -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
