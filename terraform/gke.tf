@@ -10,7 +10,7 @@ ip_allocation_policy {
     services_secondary_range_name = "services-subnet"
   }
   private_cluster_config {
-    enable_private_endpoint = true
+    enable_private_endpoint = false
     enable_private_nodes    = true
     master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
