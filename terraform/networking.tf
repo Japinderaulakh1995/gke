@@ -1,17 +1,3 @@
-locals {
-  enabled_apis = [
-    "compute.googleapis.com",
-    "container.googleapis.com"
-  ]
-}
-resource "google_project_service" "enabled_apis" {
-  for_each           = toset(local.enabled_apis)
-  service            = each.value
-  disable_on_destroy = false
-  project            = var.project_name
-}
-
-##############################################################
 resource "google_compute_network" "vpc_network" {
   name                    = "${var.project_name}-vpc"
   auto_create_subnetworks = false
