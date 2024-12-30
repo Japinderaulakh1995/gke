@@ -23,7 +23,7 @@ ip_allocation_policy {
       disabled = false
     }
     network_policy_config {
-      disabled = false
+      disabled = true
     }
   }
   logging_service    = "logging.googleapis.com/kubernetes"
