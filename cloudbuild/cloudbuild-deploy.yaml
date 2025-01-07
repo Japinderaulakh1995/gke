@@ -8,4 +8,4 @@ steps:
   - 'kubernetes/blue-deployment.yaml'
   env:
   - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cloudbuild'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=ey-devops-cluster'
