@@ -4,9 +4,9 @@ steps:
   id: Deploy
   args:
   - 'apply'
-  - '-f'
+# - '-f'
 # - 'kubernetes/blue-deployment.yaml'
-  - 'kubernetes/green-deployment.yaml'
+# - 'kubernetes/green-deployment.yaml'
   - '-f'
   - 'kubernetes/service.yaml'
   env:
