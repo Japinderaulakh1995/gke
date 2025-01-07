@@ -6,6 +6,8 @@ steps:
   - 'apply'
   - '-f'
   - 'kubernetes/blue-deployment.yaml'
+  - '-f'
+  - 'kubernetes/service.yaml'
   env:
   - 'CLOUDSDK_COMPUTE_REGION=us-central1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=ey-devops-cluster'
