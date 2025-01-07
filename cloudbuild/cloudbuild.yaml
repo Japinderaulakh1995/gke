@@ -5,7 +5,8 @@ steps:
   args:
   - 'apply'
   - '-f'
-  - 'kubernetes/blue-deployment.yaml'
+ # - 'kubernetes/blue-deployment.yaml'
+  - 'kubernetes/green-deployment.yaml'
   - '-f'
   - 'kubernetes/service.yaml'
   env:
