@@ -17,7 +17,7 @@ ip_allocation_policy {
   }
   addons_config {
     horizontal_pod_autoscaling {
-      disabled = false
+      disabled = true
     }
     http_load_balancing {
       disabled = false
