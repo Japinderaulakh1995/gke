@@ -1,4 +1,4 @@
-resource "google_container_cluster" "primary" {
+#{resource "google_container_cluster" "primary" {
   name               =  "${var.project_name}-cluster"
   location           = var.region
   initial_node_count = 1
@@ -54,4 +54,5 @@ resource "google_container_node_pool" "general" {
       "https://www.googleapis.com/auth/cloud-platform"
     ]
   }
+}
 }
