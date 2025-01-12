@@ -3,8 +3,13 @@ name: 'Terraform'
 on:
   workflow_dispatch:
     inputs:
-      deploy:
+      terraform_apply:
         description: 'Do you also want to run the terraform apply?'
+        required: false
+        default: 'false'
+        type: boolean
+      terraform_destroy:
+        description: 'Do you also want to run the terraform destroy?'
         required: false
         default: 'false'
         type: boolean
@@ -62,7 +67,13 @@ jobs:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
 
     - name: Terraform Apply
-      if: ${{ github.event.inputs.deploy == 'true' }}  # Conditional step
+      if: ${{ github.event.inputs.terraform_apply == 'true' }}  # Conditional step
+      run: terraform apply -auto-approve -input=false
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
+
+    - name: Terraform Destroy
+      if: ${{ github.event.inputs.terraform_destroy == 'true' }}  # Conditional step
       run: terraform destroy -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
