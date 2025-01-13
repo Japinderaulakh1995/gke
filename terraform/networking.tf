@@ -15,6 +15,7 @@ resource "google_compute_subnetwork" "subnetwork" {
   ip_cidr_range = var.gke_node_cidr
   region        = var.region
   network       = data.google_compute_network.vpc_network.id
+  private_ip_google_access = true
   secondary_ip_range {
     range_name    = "pods-subnet"
     ip_cidr_range = var.pods_cidr
@@ -25,26 +26,26 @@ resource "google_compute_subnetwork" "subnetwork" {
   }
 }
 #####################################################
-resource "google_compute_router" "nat_router" {
-  name    = "${var.project_name}-router"
-  network = data.google_compute_network.vpc_network.id
-  region  = var.region
-}
+# resource "google_compute_router" "nat_router" {
+#   name    = "${var.project_name}-router"
+#   network = data.google_compute_network.vpc_network.id
+#   region  = var.region
+# }
 
-resource "google_compute_address" "global_ip" {
-  name         = "${var.project_name}-global-ip"
-  address_type = "EXTERNAL"
-  region       = var.region
-}
+# resource "google_compute_address" "global_ip" {
+#   name         = "${var.project_name}-global-ip"
+#   address_type = "EXTERNAL"
+#   region       = var.region
+# }
 
-resource "google_compute_router_nat" "nat" {
-  name                               = "${var.project_name}-nat"
-  router                             = google_compute_router.nat_router.name
-  region                             = var.region
-  nat_ip_allocate_option             = "MANUAL_ONLY"
-  nat_ips                            = [google_compute_address.global_ip.self_link]
-  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
-}
+# resource "google_compute_router_nat" "nat" {
+#   name                               = "${var.project_name}-nat"
+#   router                             = google_compute_router.nat_router.name
+#   region                             = var.region
+#   nat_ip_allocate_option             = "MANUAL_ONLY"
+#   nat_ips                            = [google_compute_address.global_ip.self_link]
+#   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+# }
 
 ##########################################################
 resource "google_compute_firewall" "allow-ssh" {
