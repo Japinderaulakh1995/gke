@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-testing
+  namespace: default
+spec:
+  replicas: 1  # Starting with 1 replica
+  selector:
+    matchLabels:
+      app: load-testing
+  template:
+    metadata:
+      labels:
+        app: load-testing
+    spec:
+      containers:
+        - name: load-tester
+          image: polinux/stress:latest  # A container image with CPU/memory stress testing tool
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              # Stress the CPU by running the stress command with a specified number of workers
+              stress --cpu 1 --timeout 3600s
+          resources:
+            requests:
+              cpu: "500m"         # Initial CPU request
+              memory: "500Mi"     # Initial memory request
+            limits:
+              cpu: "500m"        # Maximum CPU limit
+              memory: "500Mi" 
