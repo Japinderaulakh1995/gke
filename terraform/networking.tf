@@ -1,10 +1,15 @@
-resource "google_compute_network" "vpc_network" {
-  name                    = "${var.project_name}-vpc"
-  auto_create_subnetworks = false
- lifecycle {
-   prevent_destroy = true
- }
+#resource "google_compute_network" "vpc_network" {
+#  name                    = "${var.project_name}-vpc"
+#  auto_create_subnetworks = false
+# lifecycle {
+#   prevent_destroy = true
+# }
+#}
+data "google_compute_network" "vpc_network" {
+  name    = "ey-devops-vpc"                
+  project = "my-project-id"         
 }
+
 resource "google_compute_subnetwork" "subnetwork" {
   name          = "${var.project_name}-subnet"
   ip_cidr_range = var.gke_node_cidr
