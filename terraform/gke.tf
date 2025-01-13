@@ -4,7 +4,7 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 1
   remove_default_node_pool = true
   deletion_protection = false
-  network            = google_compute_network.vpc_network.name
+  network            = data.google_compute_network.vpc_network.name
   subnetwork         = google_compute_subnetwork.subnetwork.name
 ip_allocation_policy {
     cluster_secondary_range_name  = "pods-subnet"
