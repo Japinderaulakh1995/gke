@@ -17,7 +17,7 @@ resource "google_container_cluster" "primary" {
   }
   addons_config {
     horizontal_pod_autoscaling {
-      disabled = true
+      disabled = false
     }
     http_load_balancing {
       disabled = false
