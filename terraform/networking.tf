@@ -10,20 +10,26 @@ data "google_compute_network" "vpc_network" {
   project = var.project         
 }
 
-resource "google_compute_subnetwork" "subnetwork" {
-  name          = "${var.project_name}-subnet"
-  ip_cidr_range = var.gke_node_cidr
-  region        = var.region
-  network       = data.google_compute_network.vpc_network.id
-  private_ip_google_access = false
-  secondary_ip_range {
-    range_name    = "pods-subnet"
-    ip_cidr_range = var.pods_cidr
-  }
-  secondary_ip_range {
-    range_name    = "services-subnet"
-    ip_cidr_range = var.svc_cidr
-  }
+#   resource "google_compute_subnetwork" "subnetwork" {
+#   name          = "${var.project_name}-subnet"
+#   ip_cidr_range = var.gke_node_cidr
+#   region        = var.region
+#   network       = data.google_compute_network.vpc_network.id
+#   private_ip_google_access = false
+#   secondary_ip_range {
+#     range_name    = "pods-subnet"
+#     ip_cidr_range = var.pods_cidr
+#   }
+#   secondary_ip_range {
+#     range_name    = "services-subnet"
+#     ip_cidr_range = var.svc_cidr
+#   }
+# }
+
+data "google_compute_subnetwork" "subnetwork" {
+  name    = "gke-ey-devops-cluster-49ff1bac-pe-subnet"      
+  region  = "us-central1"          
+  project = var.project       
 }
 #####################################################
 # resource "google_compute_router" "nat_router" {
