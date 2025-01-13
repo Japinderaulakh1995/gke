@@ -7,14 +7,14 @@
 #}
 data "google_compute_network" "vpc_network" {
   name    = "ey-devops-vpc"                
-  project = "my-project-id"         
+  project = var.project         
 }
 
 resource "google_compute_subnetwork" "subnetwork" {
   name          = "${var.project_name}-subnet"
   ip_cidr_range = var.gke_node_cidr
   region        = var.region
-  network       = google_compute_network.vpc_network.id
+  network       = data.google_compute_network.vpc_network.id
   secondary_ip_range {
     range_name    = "pods-subnet"
     ip_cidr_range = var.pods_cidr
@@ -27,7 +27,7 @@ resource "google_compute_subnetwork" "subnetwork" {
 #####################################################
 resource "google_compute_router" "nat_router" {
   name    = "${var.project_name}-router"
-  network = google_compute_network.vpc_network.id
+  network = data.google_compute_network.vpc_network.id
   region  = var.region
 }
 
@@ -49,7 +49,7 @@ resource "google_compute_router_nat" "nat" {
 ##########################################################
 resource "google_compute_firewall" "allow-ssh" {
   name    = "${var.project_name}-allow-ssh"
-  network = google_compute_network.vpc_network.id
+  network = data.google_compute_network.vpc_network.id
 
   allow {
     protocol = "tcp"
