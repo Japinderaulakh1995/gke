@@ -29,5 +29,5 @@ variable "svc_cidr" {
 
 variable "master_ipv4_cidr_block" {
   description = "cidr range for service"
-  default = "172.16.0.0/28"
+  default = "172.17.0.0/28"
 }
