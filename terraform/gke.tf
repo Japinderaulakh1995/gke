@@ -12,7 +12,7 @@ ip_allocation_policy {
   }
   private_cluster_config {
     enable_private_endpoint = false
-    enable_private_nodes    = true
+    enable_private_nodes    = false
     master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
   addons_config {
