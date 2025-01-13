@@ -65,6 +65,14 @@ jobs:
       run: terraform plan -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
+        
+      # Generates an execution plan for Terraform
+    - name: Terraform Plan2
+      run: terraform state rm google_compute_network.vpc_network
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GCP_CRED }}
+
+  
 
     - name: Terraform Apply
       if: ${{ github.event.inputs.terraform_apply == 'true' }}  # Conditional step
