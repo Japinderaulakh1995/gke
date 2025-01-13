@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: httpd:2.4
+          image: nginxdemos/hello:plain-text
           ports:
             - containerPort: 80
