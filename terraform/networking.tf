@@ -1,6 +1,9 @@
 resource "google_compute_network" "vpc_network" {
   name                    = "${var.project_name}-vpc"
   auto_create_subnetworks = false
+ lifecycle {
+   prevent_destroy = true
+ }
 }
 resource "google_compute_subnetwork" "subnetwork" {
   name          = "${var.project_name}-subnet"
