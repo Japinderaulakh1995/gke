@@ -6,10 +6,10 @@ resource "google_container_cluster" "primary" {
   deletion_protection = false
   network            = data.google_compute_network.vpc_network.name
   subnetwork         = data.google_compute_subnetwork.subnetwork.name
-ip_allocation_policy {
-    cluster_secondary_range_name  = "pods-subnet"
-    services_secondary_range_name = "services-subnet"
-  }
+#ip_allocation_policy {
+#    cluster_secondary_range_name  = "pods-subnet"
+#    services_secondary_range_name = "services-subnet"
+#  }
   private_cluster_config {
     enable_private_endpoint = false
     enable_private_nodes    = false
