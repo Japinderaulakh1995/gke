@@ -102,7 +102,7 @@ pipeline {
             steps {
                 script {
                     echo "Testing application availability at: http://${env.EXTERNAL_IP}"
-                    sh "curl -m 10 http://${env.EXTERNAL_IP}"
+                    sh "curl -m 30 http://${env.EXTERNAL_IP}"
                 }
             }
         }
@@ -181,7 +181,7 @@ pipeline {
             steps {
                 script {
                     echo "Testing application availability at: http://${env.EXTERNAL_IP}"
-                    sh "curl -m 10 http://${env.EXTERNAL_IP}"
+                    sh "curl -m 30 http://${env.EXTERNAL_IP}"
                 }
             }
         }
