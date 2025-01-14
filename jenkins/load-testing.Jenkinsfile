@@ -39,7 +39,7 @@ pipeline {
                 '''
             }
         }
-        stage('Incrase the load') {
+        stage('Increase the load') {
             steps {
                 sh '''
                  kubectl apply -f kubernetes/load_testing.yaml
