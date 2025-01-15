@@ -9,7 +9,7 @@
 crash.log
 crash.*.log
 
-# Ignore sensitive files
+# Ignore sensitive file
 *.pem
 *.key
 *.pub
